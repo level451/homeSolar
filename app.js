@@ -7,11 +7,18 @@ connector = require('./webSocketConnector');
 
 
 
+// function loadLocalSettings() {
+//     try {
+//         global.localSettings = require('./localSettings.JSON')
+//     } catch (err) {
+//         console.log('Local Settings Failed to Load - Going into setting mode',err)
+//         global.localSettings = false
+//     }
+// }
 function loadLocalSettings() {
-    try {
-        global.localSettings = require('./localSettings.JSON')
-    } catch (err) {
-        console.log('Local Settings Failed to Load - Going into setting mode',err)
-        global.localSettings = false
+global.localSettings = {
+    "home":{
+        "address":"10.6.1.2:2112"
     }
+}
 }
