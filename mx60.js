@@ -55,7 +55,12 @@ port.on('open',function(){
                 batteryVoltage:outbackData[10]/10,
             }
 
-            mx60Emitter.emit('data',outbackObject)
+            if (lastData[outbackData[0]] != outbackObject){
+                lastData[outbackData[0]] = outbackObject
+                mx60Emitter.emit('data',lastData)
+            }
+
+
 
         } else
         {
