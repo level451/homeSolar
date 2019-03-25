@@ -70,9 +70,10 @@ port.on('open',function(){
                 chargeMode:chargeMode,
                 batteryVoltage:Number(outbackData[10])/10
             }
-            lastData[outbackData[0]] = outbackObject
 
             if ( (Math.abs(lastData[outbackData[0]].batteryVoltage - outbackObject.batteryVoltage).toFixed(1) ) > 0.1 ){
+                lastData[outbackData[0]] = outbackObject
+
                 mx60Emitter.emit('data',lastData)
             } else
             {
