@@ -21,17 +21,27 @@ port.on('open',function(){
 
     parser.on('data',function(serialData){
         let outbackData = serialData.split(',');
+        if (outbackData[0] != 'B' || outbackData[0] != 'C'){
+            console.log('bad data - rejecting')
 
-        mx60Emitter.emit('data',{
-            address:outbackData[0],
-            chargerCurrent:outbackData[2],
-            pvCurrent:outbackData[3],
-            pvVoltage:outbackData[4],
-            dailyKWH:outbackData[5]/10,
-            batteryVoltage:outbackData[10]/10,
-            dailyAH:outbackData[11]
+        } else
+        {
+            mx60Emitter.emit('data',{
+                address:outbackData[0],
+                chargerCurrent:outbackData[2],
+                pvCurrent:outbackData[3],
+                pvVoltage:outbackData[4],
+                dailyKWH:outbackData[5]/10,
+                tenths:outbackData[6],
+                auxMode:outbackData[7],
+                errorMode:outbackData[8],
+                chargeMode:outbackData[9],
+                batteryVoltage:outbackData[10]/10,
+                dailyAH:outbackData[11]
 
-        })
+            })
+
+        }
 
 
     }
