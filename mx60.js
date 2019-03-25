@@ -52,7 +52,7 @@ port.on('open',function(){
                 pvVoltage:Number(outbackData[4]),
                 dailyKWH:outbackData[5]/10,
                 chargeMode:chargeMode,
-
+                batteryVoltage:outbackData[10]/10
             }
 
             if (lastData[outbackData[0]] != outbackObject){
