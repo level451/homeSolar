@@ -44,7 +44,7 @@ port.on('open',function(){
                 console.log('chargemode'+data[9])
         }
 
-        if (outbackData[0] == 'B' || outbackData[0] == 'C'){
+        if (outbackData[0] == 'B' ){
             let outbackObject = {}
             // outbackObject = {
             //     chargerCurrent:Number(outbackData[2]),
