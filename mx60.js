@@ -46,12 +46,21 @@ port.on('open',function(){
 
         if (outbackData[0] == 'B' || outbackData[0] == 'C'){
             let outbackObject = {}
-             outbackObject = {
+            // outbackObject = {
+            //     chargerCurrent:Number(outbackData[2]),
+            //     pvCurrent:Number(outbackData[3]),
+            //     pvVoltage:Number(outbackData[4]),
+            //     dailyKWH:outbackData[5]/10,
+            //     chargeMode:chargeMode,
+            //     batteryVoltage:outbackData[10]/10
+            // }
+            outbackObject = {
                 chargerCurrent:Number(outbackData[2]),
                 pvCurrent:Number(outbackData[3]),
-                pvVoltage:Number(outbackData[4]),
+
                 dailyKWH:outbackData[5]/10,
-                chargeMode:chargeMode
+                chargeMode:chargeMode,
+
             }
 
             if (lastData[outbackData[0]] != outbackObject){
