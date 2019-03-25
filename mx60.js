@@ -22,7 +22,7 @@ port.on('open',function(){
     parser.on('data',function(serialData){
         let outbackData = serialData.split(',');
 
-        mx60Emitter.emit({
+        mx60Emitter.emit('data',{
             address:outbackData[0],
             chargerCurrent:outbackData[2],
             pvCurrent:outbackData[3],
