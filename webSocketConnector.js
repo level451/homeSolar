@@ -71,5 +71,5 @@ function heartbeat() {
 }
 
 mx60.on('data',(x)=>{
-    //ws.send(JSON.stringify({emitterId:'mx60',type:'data',data:x}))
+    // ws.send(JSON.stringify({emitterId:'mx60',type:'data',data:x}))
 });
