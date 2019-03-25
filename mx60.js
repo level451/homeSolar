@@ -5,7 +5,8 @@ const EventEmitter = require('events');
 const mx60Emitter = new EventEmitter();
 
 module.exports = mx60Emitter;
-
+var lastData = {B:{},C:{}}
+var mxC = {};
 
 const port = new SerialPort('/dev/serial/by-id/usb-Prolific_Technology_Inc._USB-Serial_Controller-if00-port0',
     {baudRate: 19200})
@@ -21,7 +22,7 @@ port.on('open',function(){
 
     parser.on('data',function(serialData){
         let outbackData = serialData.split(',');
-
+        outbackData[0]=outbackData[0].substr(1);
         let chargeMode = '';
         switch (Number(outbackData[9])) { // aux mode
             case 0:
@@ -43,9 +44,9 @@ port.on('open',function(){
                 console.log('chargemode'+data[9])
         }
 
-        if (outbackData[0] == '\nB' || outbackData[0] == '\nC'){
-            let  outbackObject = {
-                address:outbackData[0].substr(1),
+        if (outbackData[0] == 'B' || outbackData[0] == 'C'){
+            let outbackObject = {}
+             outbackObject[outbackData[0]] = {
                 chargerCurrent:Number(outbackData[2]),
                 pvCurrent:Number(outbackData[3]),
                 pvVoltage:Number(outbackData[4]),
