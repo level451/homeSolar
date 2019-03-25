@@ -47,8 +47,8 @@ port.on('open',function(){
             let  outbackObject = {
                 address:outbackData[0].substr(1),
                 chargerCurrent:Number(outbackData[2]),
-                pvCurrent:outbackData[3],
-                pvVoltage:outbackData[4],
+                pvCurrent:Number(outbackData[3]),
+                pvVoltage:Number(outbackData[4]),
                 dailyKWH:outbackData[5]/10,
                 chargeMode:chargeMode,
                 batteryVoltage:outbackData[10]/10,
