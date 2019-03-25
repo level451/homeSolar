@@ -18,12 +18,7 @@ function connect() {
 
     ws.on('open',heartbeat);
     ws.on('open',function(){
-
-
-            ws.send(JSON.stringify({emitterId:"systemInfo",mac:machineInfo.network[0].mac,
-                event:'machineInfo',
-                machineInfo:machineInfo}))
-
+        console.log('connected to home')
 
     });
     ws.on('ping', heartbeat);
