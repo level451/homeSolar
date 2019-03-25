@@ -22,6 +22,27 @@ port.on('open',function(){
     parser.on('data',function(serialData){
         let outbackData = serialData.split(',');
 
+        let chargeMode = '';
+        switch (Number(outbackData[9])) { // aux mode
+            case 0:
+                chargeMode = 'Silent';
+                break;
+            case 1:
+                chargeMode = 'Float';
+                break;
+            case 2:
+                chargeMode = 'Bulk';
+                break;
+            case 3:
+                chargeMode = 'Absorb';
+                break;
+            case 4:
+                chargeMode = 'EQ';
+                break;
+            default:
+                console.log('chargemode'+data[9])
+        }
+
         if (outbackData[0] == '\nB' || outbackData[0] == '\nC'){
             let  outbackObject = {
                 address:outbackData[0],
@@ -33,26 +54,6 @@ port.on('open',function(){
                 chargeMode:chargeMode,
                 batteryVoltage:outbackData[10]/10,
                 dailyAH:outbackData[11]
-            }
-            let chargeMode = '';
-            switch (Number(outbackData[9])) { // aux mode
-                case 0:
-                    outbackObject.chargeMode = 'Silent';
-                    break;
-                case 1:
-                    outbackObject.chargeMode = 'Float';
-                    break;
-                case 2:
-                    outbackObject.chargeMode = 'Bulk';
-                    break;
-                case 3:
-                    outbackObject.chargeMode = 'Absorb';
-                    break;
-                case 4:
-                    outbackObject.chargeMode = 'EQ';
-                    break;
-                default:
-                    console.log('chargemode'+data[9])
             }
 
             mx60Emitter.emit('data',outbackObject)
