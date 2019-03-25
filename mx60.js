@@ -9,7 +9,7 @@ const parser = port.pipe(new Readline({delimiter: '\r'}))
 console.log('here');
 
 port.on('open',function(){
-    port.set({dtr:true,rts:false}
+    port.set({dtr:true,rts:false})
     console.log('Outback Port Open')
     );
 
