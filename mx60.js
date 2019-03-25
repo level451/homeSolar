@@ -44,29 +44,21 @@ port.on('open',function(){
                 console.log('chargemode'+data[9])
         }
 
-        if (outbackData[0] == 'B' ){
+        if (outbackData[0] == 'B' || outbackData[0] == 'C'){
             let outbackObject = {}
-            // outbackObject = {
-            //     chargerCurrent:Number(outbackData[2]),
-            //     pvCurrent:Number(outbackData[3]),
-            //     pvVoltage:Number(outbackData[4]),
-            //     dailyKWH:outbackData[5]/10,
-            //     chargeMode:chargeMode,
-            //     batteryVoltage:outbackData[10]/10
-            // }
             outbackObject = {
                 chargerCurrent:Number(outbackData[2]),
                 pvCurrent:Number(outbackData[3]),
-
+                pvVoltage:Number(outbackData[4]),
                 dailyKWH:outbackData[5]/10,
                 chargeMode:chargeMode,
-
+                batteryVoltage:outbackData[10]/10
             }
 
-            if (lastData[outbackData[0]] != outbackObject){
+            if (lastData[outbackData[0]].batteryVoltage != outbackObject.batteryVoltage){
                 console.log((lastData[outbackData[0]],outbackObject))
                 lastData[outbackData[0]] = outbackObject
-               // mx60Emitter.emit('data',lastData)
+                mx60Emitter.emit('data',lastData)
             } else
             {
                 mx60Emitter.emit('data','skip')
