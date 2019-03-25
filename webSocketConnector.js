@@ -5,10 +5,10 @@ const wscEmitter = new EventEmitter();
 
 //class MyEmitter extends EventEmitter {}
 module.exports = wscEmitter;
-var ws
-var sid
+var ws;
+var sid;
 
-connect()
+connect();
 function connect() {
     if (!localSettings || !localSettings.MasterConsole.Address){
         console.log("Can't connect to MasterConsole - address not in localsettings");
@@ -16,7 +16,7 @@ function connect() {
 
     ws = new WebSocket('wss://'+localSettings.MasterConsole.Address+'?mac='+machineInfo.network[0].mac+'&type=homeSolar');
 
-    ws.on('open',heartbeat)
+    ws.on('open',heartbeat);
     ws.on('open',function(){
 
 
@@ -25,30 +25,30 @@ function connect() {
                 machineInfo:machineInfo}))
 
 
-    })
-    ws.on('ping', heartbeat)
+    });
+    ws.on('ping', heartbeat);
 
     ws.on('message', function incoming(data) {
-        dataProcessor(JSON.parse(data))
+        dataProcessor(JSON.parse(data));
         return;
 
         setTimeout(function () {
             ws.send(JSON.stringify({emitterId: data.emitterId, results: "sucess"}));
-        }, data.timeOut)
+        }, data.timeOut);
         console.log(data);
     });
     ws.on('close', function clear() {
         clearTimeout(this.pingTimeout);
-        console.log('onclose - lost connection to master console')
+        console.log('onclose - lost connection to master console');
         reconnect();
     });
 
     ws.on('error', function (err) {
-        this.close()
+        this.close();
         console.log(err)
 
 
-    })
+    });
     function reconnect(){
         setTimeout(function() {
             connect();
@@ -69,6 +69,7 @@ function heartbeat() {
         console.log('terminated connection')
     }, 30000 + 1000);
 }
+
 mx60.on('data',(x)=>{
     ws.send(JSON.stringify({emitterId:'mx60',type:'data',data:x}))
-}
+});
