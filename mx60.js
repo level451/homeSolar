@@ -11,7 +11,7 @@ console.log('here');
 port.on('open',function(){
     port.set({dtr:true,rts:false})
     console.log('Outback Port Open')
-    );
+    });
 
 
     parser.on('data',function(serialData){
