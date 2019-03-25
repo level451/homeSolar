@@ -46,7 +46,7 @@ port.on('open',function(){
         if (outbackData[0] == '\nB' || outbackData[0] == '\nC'){
             let  outbackObject = {
                 address:outbackData[0].substr(1),
-                chargerCurrent:outbackData[2],
+                chargerCurrent:Number(outbackData[2]),
                 pvCurrent:outbackData[3],
                 pvVoltage:outbackData[4],
                 dailyKWH:outbackData[5]/10,
