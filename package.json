@@ -2,8 +2,8 @@
   "name": "homeSolar",
   "version": "1.0.0",
   "dependencies": {
+    "@serialport/parser-readline": "^2.0.2",
     "serialport": "^7.1.4",
-    "@serialport/parser-readline": "^2.0.2"
-    
+    "ws": "^6.2.0"
   }
 }
