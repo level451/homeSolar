@@ -10,11 +10,11 @@ var sid;
 
 connect();
 function connect() {
-    if (!localSettings || !localSettings.MasterConsole.Address){
+    if (!localSettings || !localSettings.home.address){
         console.log("Can't connect to MasterConsole - address not in localsettings");
         return}
 
-    ws = new WebSocket('wss://'+localSettings.MasterConsole.Address+'?mac='+machineInfo.network[0].mac+'&type=homeSolar');
+    ws = new WebSocket('wss://'+localSettings.home.address+'?mac=unknown&type=homeSolar');
 
     ws.on('open',heartbeat);
     ws.on('open',function(){
