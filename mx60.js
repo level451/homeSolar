@@ -21,11 +21,7 @@ port.on('open',function(){
 
     parser.on('data',function(serialData){
         let outbackData = serialData.split(',');
-        if (outbackData[0] != '\nB' || outbackData[0] != '\nC'){
-            console.log('bad data - rejecting',outbackData[0],)
-
-        } else
-        {
+        if (outbackData[0] == '\nB' || outbackData[0] == '\nC'){
             mx60Emitter.emit('data',{
                 address:outbackData[0],
                 chargerCurrent:outbackData[2],
@@ -41,6 +37,10 @@ port.on('open',function(){
 
             })
 
+        } else
+        {
+
+            console.log('bad data - rejecting',outbackData[0],)
         }
 
 
