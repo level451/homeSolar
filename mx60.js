@@ -46,7 +46,7 @@ port.on('open',function(){
 
         if (outbackData[0] == 'B' || outbackData[0] == 'C'){
             let outbackObject = {}
-             outbackObject[outbackData[0]] = {
+             outbackObject = {
                 chargerCurrent:Number(outbackData[2]),
                 pvCurrent:Number(outbackData[3]),
                 pvVoltage:Number(outbackData[4]),
