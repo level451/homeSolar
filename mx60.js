@@ -7,8 +7,16 @@ port.on('data', function (data) {
 })
 const parser = port.pipe(new Readline({delimiter: '\r'}))
 console.log('here');
-parser.on('data', console.log)
-port.on('open',function(){
-    port.set({dtr:true,rts:false});
 
-    console.log('open')})
+port.on('open',function(){
+    port.set({dtr:true,rts:false}
+    console.log('Outback Port Open')
+    );
+
+
+    parser.on('data',function(serialData){
+        let outbackData = serialData.split(',');
+        console.log(outbackData)
+
+    }
+)
