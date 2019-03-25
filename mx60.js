@@ -68,7 +68,7 @@ port.on('open',function(){
                 pvVoltage:Number(outbackData[4]),
                 dailyKWH:outbackData[5]/10,
                 chargeMode:chargeMode,
-                batteryVoltage:outbackData[10]/10
+                batteryVoltage:Number(outbackData[10])/10
             }
 
             if ( Math.abs(lastData[outbackData[0]].batteryVoltage - outbackObject.batteryVoltage) > 0.1 ){
