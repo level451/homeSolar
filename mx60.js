@@ -5,7 +5,23 @@ const EventEmitter = require('events');
 const mx60Emitter = new EventEmitter();
 
 module.exports = mx60Emitter;
-var lastData = {}
+var lastData = {B:{
+        chargerCurrent:0,
+        pvCurrent:0,
+        pvVoltage:0,
+        dailyKWH:0,
+        chargeMode:'',
+        batteryVoltage:0
+
+    },C:{
+        chargerCurrent:0,
+        pvCurrent:0,
+        pvVoltage:0,
+        dailyKWH:0,
+        chargeMode:'',
+        batteryVoltage:0
+
+    }}
 var mxC = {};
 
 const port = new SerialPort('/dev/serial/by-id/usb-Prolific_Technology_Inc._USB-Serial_Controller-if00-port0',
