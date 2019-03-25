@@ -9,7 +9,7 @@ connector = require('./webSocketConnector');
 
 function loadLocalSettings() {
     try {
-        global.localSettings = require('./localSettings')
+        global.localSettings = require('./localSettings.JSON')
     } catch (err) {
         console.log('Local Settings Failed to Load - Going into setting mode')
         global.localSettings = false
