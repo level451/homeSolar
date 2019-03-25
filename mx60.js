@@ -63,9 +63,10 @@ port.on('open',function(){
 
             }
 
-            if (lastData[outbackData[0]] == outbackObject){
+            if (lastData[outbackData[0]] != outbackObject){
+                console.log((lastData[outbackData[0]],outbackObject))
                 lastData[outbackData[0]] = outbackObject
-                mx60Emitter.emit('data',lastData)
+               // mx60Emitter.emit('data',lastData)
             } else
             {
                 mx60Emitter.emit('data','skip')
