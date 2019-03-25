@@ -14,7 +14,7 @@ function connect() {
         console.log("Can't connect to MasterConsole - address not in localsettings");
         return}
 
-    ws = new WebSocket('wss://'+localSettings.home.address+'?mac=unknown&type=homeSolar');
+    ws = new WebSocket('ws://'+localSettings.home.address+'?mac=unknown&type=homeSolar');
 
     ws.on('open',heartbeat);
     ws.on('open',function(){
