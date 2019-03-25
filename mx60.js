@@ -77,7 +77,6 @@ port.on('open',function(){
                 mx60Emitter.emit('data',lastData)
             } else
             {
-                mx60Emitter.emit('data','skip')
             }
 
 
