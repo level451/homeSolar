@@ -72,7 +72,7 @@ port.on('open',function(){
             }
 
             if ( Math.abs(lastData[outbackData[0]].batteryVoltage - outbackObject.batteryVoltage) > 0.1 ){
-                console.log(outbackData[0], ": ", lastData[outbackData[0]].batteryVoltage, lastData[outbackData[0]].batteryVoltage - outbackObject.batteryVoltage,Math.abs(lastData[outbackData[0]].batteryVoltage - outbackObject.batteryVoltage))
+                console.log(outbackData[0], ": ", lastData[outbackData[0]].batteryVoltage, lastData[outbackData[0]].batteryVoltage - outbackObject.batteryVoltage, typeof Math.abs(lastData[outbackData[0]].batteryVoltage - outbackObject.batteryVoltage))
                 lastData[outbackData[0]] = outbackObject
                 mx60Emitter.emit('data',lastData)
             } else
