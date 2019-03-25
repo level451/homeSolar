@@ -5,7 +5,7 @@ const EventEmitter = require('events');
 const mx60Emitter = new EventEmitter();
 
 module.exports = mx60Emitter;
-var lastData = {B:{},C:{}}
+var lastData = {}
 var mxC = {};
 
 const port = new SerialPort('/dev/serial/by-id/usb-Prolific_Technology_Inc._USB-Serial_Controller-if00-port0',
