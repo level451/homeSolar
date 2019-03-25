@@ -21,21 +21,41 @@ port.on('open',function(){
 
     parser.on('data',function(serialData){
         let outbackData = serialData.split(',');
+
         if (outbackData[0] == '\nB' || outbackData[0] == '\nC'){
-            mx60Emitter.emit('data',{
+            let  outbackObject = {
                 address:outbackData[0],
                 chargerCurrent:outbackData[2],
                 pvCurrent:outbackData[3],
                 pvVoltage:outbackData[4],
                 dailyKWH:outbackData[5]/10,
                 tenths:outbackData[6],
-                auxMode:outbackData[7],
-                errorMode:outbackData[8],
-                chargeMode:outbackData[9],
+                chargeMode:chargeMode,
                 batteryVoltage:outbackData[10]/10,
                 dailyAH:outbackData[11]
+            }
+            let chargeMode = '';
+            switch (Number(outbackData[9])) { // aux mode
+                case 0:
+                    outbackObject.chargeMode = 'Silent';
+                    break;
+                case 1:
+                    outbackObject.chargeMode = 'Float';
+                    break;
+                case 2:
+                    outbackObject.chargeMode = 'Bulk';
+                    break;
+                case 3:
+                    outbackObject.chargeMode = 'Absorb';
+                    break;
+                case 4:
+                    outbackObject.chargeMode = 'EQ';
+                    break;
+                default:
+                    console.log('chargemode'+data[9])
+            }
 
-            })
+            mx60Emitter.emit('data',outbackObject)
 
         } else
         {
