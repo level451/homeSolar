@@ -22,7 +22,7 @@ port.on('open',function(){
     parser.on('data',function(serialData){
         let outbackData = serialData.split(',');
         if (outbackData[0] != 'B' || outbackData[0] != 'C'){
-            console.log('bad data - rejecting')
+            console.log('bad data - rejecting',outbackData[0])
 
         } else
         {
