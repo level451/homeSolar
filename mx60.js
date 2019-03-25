@@ -50,10 +50,8 @@ port.on('open',function(){
                 pvCurrent:outbackData[3],
                 pvVoltage:outbackData[4],
                 dailyKWH:outbackData[5]/10,
-                tenths:outbackData[6],
                 chargeMode:chargeMode,
                 batteryVoltage:outbackData[10]/10,
-                dailyAH:outbackData[11]
             }
 
             mx60Emitter.emit('data',outbackObject)
