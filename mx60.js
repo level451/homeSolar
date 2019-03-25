@@ -10,7 +10,7 @@ module.exports = mx60Emitter;
 const port = new SerialPort('/dev/serial/by-id/usb-Prolific_Technology_Inc._USB-Serial_Controller-if00-port0',
     {baudRate: 19200})
 
-const parser = port.pipe(new Readline({delimiter: '\r\n'}))
+const parser = port.pipe(new Readline({delimiter: '\r'}))
 console.log('here');
 
 port.on('open',function(){
@@ -21,8 +21,8 @@ port.on('open',function(){
 
     parser.on('data',function(serialData){
         let outbackData = serialData.split(',');
-        if (outbackData[0] != 'B' || outbackData[0] != 'C'){
-            console.log('bad data - rejecting',outbackData[0])
+        if (outbackData[0] != '\nB' || outbackData[0] != '\nC'){
+            console.log('bad data - rejecting',outbackData[0],)
 
         } else
         {
