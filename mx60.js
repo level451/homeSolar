@@ -4,5 +4,6 @@ const port = new SerialPort('/dev/serial/by-id/usb-Prolific_Technology_Inc._USB-
     {baudRate: 19200})
 
 const parser = port.pipe(new Readline({delimiter: '\r'}))
-console.log('here')
+console.log('here');
 parser.on('data', console.log)
+port.on('open',function(){console.log('open')})
