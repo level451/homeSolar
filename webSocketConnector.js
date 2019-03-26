@@ -9,15 +9,17 @@ var ws;
 var sid;
 
 connect();
+
 function connect() {
-    if (!localSettings || !localSettings.home.address){
+    if (!localSettings || !localSettings.home.address) {
         console.log("Can't connect to MasterConsole - address not in localsettings");
-        return}
+        return
+    }
 
-    ws = new WebSocket('ws://'+localSettings.home.address+'?mac=unknown&type=homeSolar');
+    ws = new WebSocket('ws://' + localSettings.home.address + '?mac=unknown&type=homeSolar');
 
-    ws.on('open',heartbeat);
-    ws.on('open',function(){
+    ws.on('open', heartbeat);
+    ws.on('open', function () {
         console.log('connected to home')
 
     });
@@ -44,10 +46,11 @@ function connect() {
 
 
     });
-    function reconnect(){
-        setTimeout(function() {
+
+    function reconnect() {
+        setTimeout(function () {
             connect();
-        },5000)
+        }, 5000)
 
     }
 }
@@ -65,4 +68,11 @@ function heartbeat() {
     }, 30000 + 1000);
 }
 
-module.exports.send = function(data){ws.send(data)}
+module.exports.send = function (data) {
+    if (ws.readyState == 1) {
+        ws.send(data)
+    } else {
+        console.log('cant send socket closed', data)
+    }
+
+}
