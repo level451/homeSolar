@@ -91,3 +91,6 @@ port.on('open',function(){
 
     }
 )
+mx60.on('data',(x)=>{
+    ws.send(JSON.stringify({emitterId:'mx60',type:'data',data:x}))
+});
