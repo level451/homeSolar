@@ -79,7 +79,7 @@ port.on('open',function(){
                 mx60Emitter.emit('data',lastData)
             } else
             {
-                console.log (new date()-lastSentTime)
+                console.log (new Date()-lastSentTime)
             }
 
 
