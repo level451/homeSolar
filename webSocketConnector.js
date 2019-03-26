@@ -65,3 +65,4 @@ function heartbeat() {
     }, 30000 + 1000);
 }
 
+module.exports.send = function(data){ws.send(data)}

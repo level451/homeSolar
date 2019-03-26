@@ -23,7 +23,6 @@ var lastData = {B:{
         batteryVoltage:0
 
     }}
-var mxC = {};
 
 const port = new SerialPort('/dev/serial/by-id/usb-Prolific_Technology_Inc._USB-Serial_Controller-if00-port0',
     {baudRate: 19200})
@@ -92,5 +91,5 @@ port.on('open',function(){
     }
 )
 mx60.on('data',(x)=>{
-    ws.send(JSON.stringify({emitterId:'mx60',type:'data',data:x}))
+    connector.send(JSON.stringify({emitterId:'mx60',type:'data',data:x}))
 });
