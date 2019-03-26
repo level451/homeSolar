@@ -1,2 +1,4 @@
 git pull
-../common/git pull
+cd ..
+cd common
+git pull
