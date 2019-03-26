@@ -16,7 +16,7 @@ function connect() {
         return
     }
 
-    ws = new WebSocket('ws://' + localSettings.home.address + '?mac=unknown&type=homeSolar');
+    ws = new WebSocket('wss://' + localSettings.home.address + '?mac=unknown&type=homeSolar');
 
     ws.on('open', heartbeat);
     ws.on('open', function () {
