@@ -85,7 +85,7 @@ module.exports.remoteEmit = function (emitter, eventName, ...args) {
             console.log('send failure:', e)
         }
     } else {
-        console.log('cant send socket closed', data)
+        console.log('cant send socket closed', args)
     }
 
 
