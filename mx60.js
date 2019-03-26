@@ -71,7 +71,7 @@ port.on('open',function(){
                 batteryVoltage:Number(outbackData[10])/10
             }
 
-            if ( (Math.abs(lastData[outbackData[0]].batteryVoltage - outbackObject.batteryVoltage).toFixed(1) ) >= 0.1 ){
+            if ( (Math.abs(lastData[outbackData[0]].batteryVoltage - outbackObject.batteryVoltage).toFixed(1) ) >= -0.1 ){
                 lastData[outbackData[0]] = outbackObject
 
                 mx60Emitter.emit('data',lastData)
