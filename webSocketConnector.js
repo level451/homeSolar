@@ -80,7 +80,7 @@ module.exports.remoteEmit = function (emitter, eventName, ...args) {
     if (ws.readyState == 1) {
 
         try {
-            ws.send(JSON.stringify({emiter: emiter, eventName: eventName, args: args}))
+            ws.send(JSON.stringify({emitter: emitter, eventName: eventName, args: args}))
         } catch (e) {
             console.log('send failure:', e)
         }
