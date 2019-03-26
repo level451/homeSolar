@@ -17,7 +17,7 @@ console.log()})
 function loadLocalSettings() {
 global.localSettings = {
     "home":{
-        "address":"10.6.1.2:2112"
+        "address":"level451.com:2112"
     }
 }
 }
