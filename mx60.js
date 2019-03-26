@@ -79,7 +79,11 @@ port.on('open',function(){
                 mx60Emitter.emit('data',lastData)
             } else
             {
-                console.log (new Date()-lastSentTime)
+                if  ((new Date()-lastSentTime) > 3000){
+                    lastSentTime = new Date()
+                    mx60Emitter.emit('data',lastData)
+                }
+
             }
 
 
