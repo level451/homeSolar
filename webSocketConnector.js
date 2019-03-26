@@ -26,7 +26,7 @@ function connect() {
     ws.on('ping', heartbeat);
 
     ws.on('message', function incoming(data) {
-        dataProcessor(JSON.parse(data));
+        //dataProcessor(JSON.parse(data));
         return;
 
         setTimeout(function () {
@@ -74,5 +74,19 @@ module.exports.send = function (data) {
     } else {
         console.log('cant send socket closed', data)
     }
+
+}
+module.exports.remoteEmit = function (emitter, eventName, ...args) {
+    if (ws.readyState == 1) {
+
+        try {
+            ws.send(JSON.stringify({emiter: emiter, eventName: eventName, args: args}))
+        } catch (e) {
+            console.log('send failure:', e)
+        }
+    } else {
+        console.log('cant send socket closed', data)
+    }
+
 
 }
