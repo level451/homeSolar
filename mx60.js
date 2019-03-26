@@ -4,6 +4,7 @@ const connector = require('./webSocketConnector');
 
 const EventEmitter = require('events');
 const mx60Emitter = new EventEmitter();
+var lastSentTime = 0
 
 module.exports = mx60Emitter;
 var lastData = {B:{
@@ -37,6 +38,7 @@ port.on('open',function(){
 
 
     parser.on('data',function(serialData){
+
         let outbackData = serialData.split(',');
         outbackData[0]=outbackData[0].substr(1);
         let chargeMode = '';
@@ -71,12 +73,13 @@ port.on('open',function(){
                 batteryVoltage:Number(outbackData[10])/10
             }
 
-            if ( (Math.abs(lastData[outbackData[0]].batteryVoltage - outbackObject.batteryVoltage).toFixed(1) ) >= -0.1 ){
+            if ( (Math.abs(lastData[outbackData[0]].batteryVoltage - outbackObject.batteryVoltage).toFixed(1) ) >= 0.1 ){
                 lastData[outbackData[0]] = outbackObject
-
+                 lastSentTime = new Date()
                 mx60Emitter.emit('data',lastData)
             } else
             {
+                console.log (new date()-lastSentTime)
             }
 
 
