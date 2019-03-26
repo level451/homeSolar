@@ -3,10 +3,10 @@ const Readline = require('@serialport/parser-readline')
 const connector = require('./webSocketConnector');
 
 const EventEmitter = require('events');
-const mx60Emitter = new EventEmitter();
+const mx60 = new EventEmitter();
 var lastSentTime = 0
-
-module.exports = mx60Emitter;
+mx60.test = (d)=>{console.log(d)}
+module.exports = mx60;
 var lastData = {B:{
         chargerCurrent:0,
         pvCurrent:0,
@@ -76,12 +76,12 @@ port.on('open',function(){
             if ( (Math.abs(lastData[outbackData[0]].batteryVoltage - outbackObject.batteryVoltage).toFixed(1) ) >= 0.1 ){
                 lastData[outbackData[0]] = outbackObject
                  lastSentTime = new Date()
-                mx60Emitter.emit('data',lastData)
+                mx60.emit('data',lastData)
             } else
             {
                 if  ((new Date()-lastSentTime) > 3000){
                     lastSentTime = new Date()
-                    mx60Emitter.emit('data',lastData)
+                    mx60.emit('data',lastData)
                 }
 
             }
@@ -97,7 +97,7 @@ port.on('open',function(){
 
     }
 )
-mx60Emitter.on('data',(x)=>{
+mx60.on('data',(x)=>{
     //connector.send(JSON.stringify({emitterId:'mx60',type:'data',data:x}))
     connector.remoteEmit('mx60','realTimeData',x)
 });
