@@ -90,6 +90,6 @@ port.on('open',function(){
 
     }
 )
-mx60.on('data',(x)=>{
+mx60Emitter.on('data',(x)=>{
     connector.send(JSON.stringify({emitterId:'mx60',type:'data',data:x}))
 });
