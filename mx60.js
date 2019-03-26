@@ -1,6 +1,6 @@
 const SerialPort = require('serialport')
 const Readline = require('@serialport/parser-readline')
-const connector = require('./webSocketConnector');
+const connector = require('@level451/connector');
 
 const EventEmitter = require('events');
 const mx60 = new EventEmitter();
