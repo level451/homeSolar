@@ -1,6 +1,6 @@
 const SerialPort = require('serialport')
 const Readline = require('@serialport/parser-readline')
-const connector = require('@level451/connector');
+const connector = require('@level451/common').connector;
 connector.on('connected',()=>{
     connector.sendObjectDataToRemote('mx60',mx60)
 })
