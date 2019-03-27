@@ -2,7 +2,7 @@ const SerialPort = require('serialport')
 const Readline = require('@serialport/parser-readline')
 const connector = require('@level451/common').connector;
 connector.on('connected',()=>{
-    connector.sendObjectDataToRemote('mx60',mx60)
+    connector.sendObjectDefinitionDataToRemote('mx60',mx60)
 })
 const EventEmitter = require('events');
 const mx60 = new EventEmitter();
