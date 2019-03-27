@@ -97,7 +97,7 @@ port.on('open',function(){
 
     }
 )
-mx60.on('data',(x)=>{
+mx60.on('data',(d)=>{
     //connector.send(JSON.stringify({emitterId:'mx60',type:'data',data:x}))
-    connector.remoteEmit('mx60','realTimeData',x)
+    connector.remoteEmit('mx60','realTimeData',d)
 });
