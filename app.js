@@ -1,11 +1,10 @@
 loadLocalSettings()
 mx60 = require('./mx60')
 mx60.test('=================')
-mx60.on('data',(x)=>{console.log(x)
-console.log()})
 
 
-
+const connector = require('@level451/connector');
+connector.connect(localSettings.home.address,true,'MX60','mx60');
 
 // function loadLocalSettings() {
 //     try {
