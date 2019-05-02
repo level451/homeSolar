@@ -1,5 +1,9 @@
 {
-  "home":{
-    "address":"10.6.1.2:2112"
+  "home": {
+    "address": "10.6.1.2:2112"
+  },
+  "ServiceInfo": {
+    "id": "mx60",
+    "systemType": "solar"
   }
 }
